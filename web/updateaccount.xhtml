@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./layoutnomenu.xhtml">
+    <ui:define name="content">
+        <!--region formcreateaccount-->
+        <h:form id="formcreateaccount" prependId="false">
+            <p:panel>
+                <h:panelGrid columns="1" style="margin: 0 auto;">
+                    <h1>Create Account</h1>
+                    <p:outputLabel for="name" value="#{msg['app.user.name']}"/>
+                    <p:inputText id="name"
+                                 value="#{createAccountController.userAccount.name}"
+                                 required="true"
+                                 requiredMessage="#{msg['app.user.name.required']}"/>
+                    <p:outputLabel for="username" value="#{msg['app.user.username']}"/>
+                    <p:inputText id="username"
+                                 value="#{createAccountController.userAccount.userName}"
+                                 required="true"
+                                 requiredMessage="#{msg['app.user.username.require']}"/>
+                    <p:outputLabel for="phonenumber" value="#{msg['app.user.phonenumber']}"/>
+                    <p:inputText id="phonenumber"
+                                 value="#{createAccountController.userAccount.phonenumber}"
+                                 type="tel"
+                                 required="true"
+                                 requiredMessage="#{msg['app.user.phonenumber.require']}"/>
+                    <p:outputLabel for="dateofbirth" value="#{msg['app.user.dateofbirth']}"/>
+                    <p:calendar id="dateofbirth"
+                                value="#{createAccountController.userAccount.date_of_birth}"
+                                required="true"
+                                requiredMessage="#{msg['app.user.dateofbirth.require']}"
+                    pattern="yyyy.MM.dd"/>
+                    <p:outputLabel for="address" value="#{msg['app.user.address']}"/>
+                    <p:inputText id="address"
+                                 value="#{createAccountController.userAccount.address}"
+                                 required="true"
+                                 requiredMessage="#{msg['app.user.address.require']}"/>
+                    <p:outputLabel for="mail" value="#{msg['app.user.mail']}"/>
+                    <p:inputText id="mail"
+                                 value="#{createAccountController.userAccount.mail}"
+                                 type="email"
+                                 required="true"
+                                 requiredMessage="#{msg['app.user.mail.required']}"/>
+                    <p:outputLabel for="password" value="#{msg['app.user.password']}"/>
+                    <p:inputText id="password"
+                                 value="#{createAccountController.userAccount.password}"
+                                 required="true"
+                                 type="password"
+                                 requiredMessage="#{msg['app.user.password.required']}"/>
+                    <p:outputLabel for="turnover" value="#{msg['app.user.turnover']}"/>
+                    <p:inputNumber id="turnover"
+                                   value="#{createAccountController.userAccount.turnover}"
+                                   required="true"
+                                   symbol="€"
+                                   symbolPosition="s"
+                                   requiredMessage="#{msg['app.user.turnover.required']}"/>
+                    <p:outputLabel for="taxburden" value="#{msg['app.user.tax.burden']}"/>
+                    <p:inputNumber id="taxburden"
+                                   value="#{createAccountController.userAccount.taxburden}"
+                                   maxValue="100"
+                                   symbol="%"
+                                   symbolPosition="s"
+                                   required="true"
+                                   requiredMessage="#{msg['app.user.tax.burden.require']}"/>
+                    <p:spacer/>
+                    <p:commandButton icon="fa fa-plus"
+                                     value="#{msg['app.create.account']}"
+                                     action="#{createAccountController.saveUser}"
+                    update="@form"/>
+                    <p:linkButton icon="fa fa-arrow-left"
+                                  value="#{msg['app.return']}"
+                                  outcome="login"/>
+                </h:panelGrid>
+                <p:messages/>
+            </p:panel>
+        </h:form>
+        <!--endregion-->
+    </ui:define>
+</ui:composition>
+
